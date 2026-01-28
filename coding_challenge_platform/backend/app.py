@@ -22,7 +22,8 @@ UPLOAD_FOLDER = "uploads"
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "adminpass"
 
-MONGO_URI = "mongodb://localhost:27017/coding_challenge"
+MONGO_URI = os.environ.get("MONGO_URI")
+mongo_client = MongoClient(MONGO_URI)
 DB_NAME = "coding_challenge"
 SCORES_COLLECTION_NAME = "scores"
 
@@ -686,3 +687,4 @@ if __name__ == "__main__":
     init_db()
     port = int(os.environ.get("PORT", 8000))
     app.run(debug=True, host="0.0.0.0", port=port)
+
